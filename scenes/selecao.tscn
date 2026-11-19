@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://rwy0hnhc76u1"]
+
+[ext_resource type="Script" uid="uid://m60wybvdyo1f" path="res://scenes/selecao.gd" id="1_dmgkh"]
+[ext_resource type="Texture2D" uid="uid://d04nqjagmisuw" path="res://sprites/fundo.png" id="1_g2fm4"]
+[ext_resource type="Texture2D" uid="uid://dypkhrtin1vkm" path="res://sprites/red_walk.png" id="2_dmgkh"]
+[ext_resource type="Texture2D" uid="uid://ch1pcltkuu1l4" path="res://sprites/leaf.png" id="3_eubx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8sed"]
+atlas = ExtResource("2_dmgkh")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7utn"]
+atlas = ExtResource("3_eubx5")
+region = Rect2(0, 0, 24, 24)
+
+[node name="Selecao" type="Control" unique_id=1008658286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dmgkh")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1212894511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g2fm4")
+
+[node name="Label" type="Label" parent="." unique_id=192793335]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.5
+offset_right = 102.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "\"Escolha seu personagem\"
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2044085482]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="BotaoRed" type="Button" parent="HBoxContainer" unique_id=1594341022]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+text = "Red"
+icon = SubResource("AtlasTexture_q8sed")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="BotaoLeaf" type="Button" parent="HBoxContainer" unique_id=320042174]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+text = "Leaf
+"
+icon = SubResource("AtlasTexture_d7utn")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[connection signal="pressed" from="HBoxContainer/BotaoRed" to="." method="_on_botao_red_pressed"]
+[connection signal="pressed" from="HBoxContainer/BotaoLeaf" to="." method="_on_botao_leaf_pressed"]

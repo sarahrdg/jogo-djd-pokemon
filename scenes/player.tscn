@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dhrfkwxyssvp5"]
+
+[ext_resource type="Script" uid="uid://djhlcaykihhn7" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="SpriteFrames" uid="uid://bghcwtjolctg8" path="res://scenes/leaf_frames.tres" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euk06"]
+size = Vector2(12, 20)
+
+[node name="player" type="CharacterBody2D" unique_id=1240183247 groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1922405760]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_euk06")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1581276854]
+sprite_frames = ExtResource("3_qhqgy")
+animation = &"parado"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=253786937]
+limit_left = 0
+limit_top = 0
+limit_right = 2928
+limit_bottom = 270
+position_smoothing_enabled = true

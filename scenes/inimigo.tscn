@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://w1am8um0tqt8"]
+
+[ext_resource type="Script" uid="uid://djhr4j4wnfie4" path="res://scenes/inimigo.gd" id="1_21tsg"]
+[ext_resource type="Texture2D" uid="uid://cw3qt6ghvymok" path="res://sprites/rocket_right.png" id="1_61lki"]
+[ext_resource type="Texture2D" uid="uid://bp1f6hibsvw18" path="res://sprites/rocket_left.png" id="2_21tsg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4er16"]
+atlas = ExtResource("1_61lki")
+region = Rect2(0, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui621"]
+atlas = ExtResource("1_61lki")
+region = Rect2(28, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adsyq"]
+atlas = ExtResource("1_61lki")
+region = Rect2(56, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc2kt"]
+atlas = ExtResource("1_61lki")
+region = Rect2(84, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6kx"]
+atlas = ExtResource("2_21tsg")
+region = Rect2(0, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmr57"]
+atlas = ExtResource("2_21tsg")
+region = Rect2(28, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dgd2"]
+atlas = ExtResource("2_21tsg")
+region = Rect2(56, 0, 28, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc72h"]
+atlas = ExtResource("2_21tsg")
+region = Rect2(84, 0, 28, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euk06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4er16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui621")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adsyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc2kt")
+}],
+"loop": 1,
+"name": &"andando_direita",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v6kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmr57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dgd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc72h")
+}],
+"loop": 1,
+"name": &"andando_esquerda",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euk06"]
+size = Vector2(14, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ikp1"]
+size = Vector2(16, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_griol"]
+size = Vector2(18, 20)
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1336509283]
+collision_layer = 4
+script = ExtResource("1_21tsg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1176478344]
+sprite_frames = SubResource("SpriteFrames_euk06")
+animation = &"andando_direita"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=619760254]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_euk06")
+
+[node name="DetectorBorda" type="RayCast2D" parent="." unique_id=1607453129]
+position = Vector2(-10, 10)
+target_position = Vector2(0, 16)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1090667260]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=33068815]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_2ikp1")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=113231583]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2108222763]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_griol")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

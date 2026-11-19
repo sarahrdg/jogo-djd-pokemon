@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bghcwtjolctg8"]
+
+[ext_resource type="Texture2D" uid="uid://3gx0l6ygf36c" path="res://sprites/leaf.png" id="1_od2vp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh1a7"]
+atlas = ExtResource("1_od2vp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d668c"]
+atlas = ExtResource("1_od2vp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipkio"]
+atlas = ExtResource("1_od2vp")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xgq2"]
+atlas = ExtResource("1_od2vp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmwrm"]
+atlas = ExtResource("1_od2vp")
+region = Rect2(0, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh1a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d668c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipkio")
+}],
+"loop": 1,
+"name": &"andando",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xgq2")
+}],
+"loop": 1,
+"name": &"parado",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmwrm")
+}],
+"loop": 0,
+"name": &"pulando",
+"speed": 8.0
+}]
